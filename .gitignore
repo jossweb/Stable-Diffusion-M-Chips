@@ -1,0 +1,60 @@
+# Xcode
+DerivedData/
+*.xcuserstate
+*.xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xccheckout
+*.moved-aside
+*.xcscmblueprint
+*.xcassets
+*.xcodeproj/*.pbxuser
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Package.resolved
+*.xcodeproj/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Archives
+*.dSYM.zip
+*.bcsymbolmap
+
+# Ignore build products
+build/
+*.o
+*.d
+*.log
+*.swp
+*.out
+*.app
+*.ipa
+*.xcarchive
+
+# Swift Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# User-specific settings
+*.DS_Store
+*.swp
+*.lock
+Thumbs.db
+*~.nib
+
+# Application-specific
+*.mlmodelc
+*.mlpackage
