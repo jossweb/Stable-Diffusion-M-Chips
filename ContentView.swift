@@ -12,6 +12,10 @@ struct ContentView: View {
     @State private var generatedImage: NSImage? = nil
     @State private var isLoading = false
     @State private var missingFiles: [String] = []
+    @State private var prompt: String = ""
+    @State private var selectedSize: String = "512x512"
+    
+    let sizes = ["256x256", "512x512", "768x768"] // Tailles d'image prédéfinies
     
     var body: some View {
         VStack {
@@ -27,6 +31,23 @@ struct ContentView: View {
                         .frame(width: 300, height: 300)
                         .overlay(Text("No Image Generated").foregroundColor(.white))
                 }
+                
+                TextField("Enter your prompt here", text: $prompt)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                
+                Text("Select Image Size:")
+                    .font(.headline)
+                    .foregroundColor(.black)
+                
+                Picker("Select Image Size", selection: $selectedSize) {
+                    ForEach(sizes, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                
                 Button(action: generateImage) {
                     Text(isLoading ? "Generating..." : "Generate Image")
                         .padding()
@@ -35,6 +56,7 @@ struct ContentView: View {
                         .cornerRadius(10)
                 }
                 .disabled(isLoading)
+                .padding()
             } else {
                 VStack {
                     Text("Missing required files:")
@@ -85,6 +107,11 @@ struct ContentView: View {
     }
     
     func generateImage() {
+        guard !prompt.isEmpty else {
+            print("Prompt is empty. Please enter a prompt.")
+            return
+        }
+        
         guard missingFiles.isEmpty else {
             print("Cannot generate image. Missing files: \(missingFiles)")
             return
@@ -109,15 +136,22 @@ struct ContentView: View {
                     controlNet: controlNet,
                     configuration: configuration
                 )
+                
+                let sizeComponents = selectedSize.split(separator: "x")
+                let width = Int(sizeComponents[0]) ?? 512
+                let height = Int(sizeComponents[1]) ?? 512
+                
                 let images = try pipeline.generateImages(
-                    configuration: StableDiffusionPipeline.Configuration(prompt: "a photo of an astronaut riding a horse on moon")
+                    configuration: StableDiffusionPipeline.Configuration(
+                        prompt: prompt
+                    )
                 )
+                
                 if let cgImage = images.first {
                     DispatchQueue.main.async {
                         if let unwrappedCGImage = cgImage {
-                            let width = unwrappedCGImage.width
-                            let height = unwrappedCGImage.height
-                            self.generatedImage = NSImage(cgImage: unwrappedCGImage, size: NSSize(width: width, height: height))
+                            let resizedImage = NSImage(cgImage: unwrappedCGImage, size: NSSize(width: width, height: height))
+                            self.generatedImage = resizedImage
                         }
                         self.isLoading = false
                     }
