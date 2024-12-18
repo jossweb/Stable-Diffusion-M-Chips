@@ -20,7 +20,6 @@ This application uses the Stable Diffusion 2-1 model to generate images based on
 1. Clone the repository:
    ```sh
    git clone https://github.com/The-Real-Dr-Joss/Stable-Diffusion-M-Chips.git
-   cd Stable-Diffusion-M-Chips
    ```
 
 ## Using Stable Diffusion 2.1 with Core ML
@@ -125,4 +124,4 @@ To use the Stable Diffusion 2.1 model in this application, follow these steps to
 
 ---
 
-You’re all set! For further assistance, feel free to open an issue or contact support.
+You’re all set! For further assistance, feel free to open an issue or contact me.
