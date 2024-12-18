@@ -24,7 +24,13 @@ This application uses the Stable Diffusion 2-1 model to generate images based on
 
 ## Using Stable Diffusion 2.1 with Core ML
 
-To use the Stable Diffusion 2.1 model in this application, follow these steps to convert the model to Core ML format if you haven’t already:
+### Download CoreML files from Google Drive :
+  ```google drive link
+    https://drive.google.com/drive/folders/1nNytUky09hoWIzvtj-xIE40UlsMyzMF9?usp=sharing
+  ```
+###Or convert the model on your computer
+
+Follow these steps to convert the model to Core ML format if you haven’t already:
 
 ### Prerequisites
 
