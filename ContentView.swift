@@ -59,9 +59,9 @@ struct ContentView: View {
         }
         
         let requiredFiles = [
-            "text_encoder.mlmodelc",
+            "TextEncoder.mlmodelc",
             "unet.mlmodelc",
-            "vae_decoder.mlmodelc"
+            "VAEDecoder.mlmodelc"
         ]
         
         let missing = requiredFiles.filter { fileName in
@@ -110,7 +110,7 @@ struct ContentView: View {
                     configuration: configuration
                 )
                 let images = try pipeline.generateImages(
-                    configuration: StableDiffusionPipeline.Configuration(prompt: "a photo of an astronaut riding a horse on mars")
+                    configuration: StableDiffusionPipeline.Configuration(prompt: "a photo of an astronaut riding a horse on moon")
                 )
                 if let cgImage = images.first {
                     DispatchQueue.main.async {
