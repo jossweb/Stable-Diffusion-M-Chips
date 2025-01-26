@@ -30,7 +30,7 @@ This application uses the Stable Diffusion 2-1 model to generate images based on
   ```google drive link
     https://drive.google.com/drive/folders/1nNytUky09hoWIzvtj-xIE40UlsMyzMF9?usp=sharing
   ```
-#Or convert the model on your computer (use : https://github.com/apple/ml-stable-diffusion)
+Or convert the model on your computer (use : https://github.com/apple/ml-stable-diffusion)
 
 to finish place the 3 models in a Resources group at the root of the project
 ---
